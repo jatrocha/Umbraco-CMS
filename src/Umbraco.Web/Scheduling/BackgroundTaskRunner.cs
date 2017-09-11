@@ -219,7 +219,7 @@ namespace Umbraco.Web.Scheduling
 
                 // add task
                 //_logger.Debug<BackgroundTaskRunner>(_logPrefix + "Task added {0}", () => task.GetType().FullName);
-                _//tasks.Post(task);
+                //_tasks.Post(task);
 
                 // start
                 //StartUpLocked();

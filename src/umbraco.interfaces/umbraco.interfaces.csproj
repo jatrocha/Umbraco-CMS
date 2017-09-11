@@ -104,6 +104,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ApplicationBlocks.Data, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationBlocks.Data.2.0.0\lib\net45\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
@@ -191,7 +195,9 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

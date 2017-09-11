@@ -243,11 +243,11 @@ namespace Umbraco.Web.Scheduling
                 }
 
                 // add task
-                _logger.Debug<BackgroundTaskRunner>(_logPrefix + "Task added {0}", () => task.GetType().FullName);
-                _tasks.Post(task);
+                //_logger.Debug<BackgroundTaskRunner>(_logPrefix + "Task added {0}", () => task.GetType().FullName);
+                //_tasks.Post(task);
 
                 // start
-                StartUpLocked();
+                //StartUpLocked();
 
                 return true;
             }
@@ -321,7 +321,7 @@ namespace Umbraco.Web.Scheduling
 
             // complete the queue
             // will stop waiting on the queue or on a latch
-            _tasks.Complete();
+            //_tasks.Complete();
 
             if (force)
             {
@@ -433,7 +433,7 @@ namespace Umbraco.Web.Scheduling
                 // consumer of the source may retrieve the data). If it returns false, more output is not
                 // and will never be available, due to the source completing prior to output being available.
 
-                var output = await _tasks.OutputAvailableAsync(shutdownToken); // block until output or cancelled
+                var output = false;//await _tasks.OutputAvailableAsync(shutdownToken); // block until output or cancelled
                 if (output == false) return null;
             }
             catch (TaskCanceledException)
@@ -449,7 +449,7 @@ namespace Umbraco.Web.Scheduling
                 // InvalidOperationException exception is thrown in the returned task.
 
                 // the source cannot be empty *and* completed here - we know we have output
-                return await _tasks.ReceiveAsync(shutdownToken);
+                return null; // await _tasks.ReceiveAsync(shutdownToken);
             }
             catch (TaskCanceledException)
             {
@@ -474,7 +474,7 @@ namespace Umbraco.Web.Scheduling
             // - latched.Latch completes when the latch releases
             // - _tasks.Completion completes when the runner completes
             // -  tokenTaskSource.Task completes when this task, or the whole runner, is cancelled
-            var task = await Task.WhenAny(latched.Latch, _tasks.Completion, tokenTaskSource.Task);
+            var task = null;//await Task.WhenAny(latched.Latch, _tasks.Completion, tokenTaskSource.Task);
 
             // ok to run now
             if (task == latched.Latch)

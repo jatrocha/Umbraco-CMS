@@ -474,7 +474,7 @@ namespace Umbraco.Web.Scheduling
             // - latched.Latch completes when the latch releases
             // - _tasks.Completion completes when the runner completes
             // -  tokenTaskSource.Task completes when this task, or the whole runner, is cancelled
-            var task = null;//await Task.WhenAny(latched.Latch, _tasks.Completion, tokenTaskSource.Task);
+            var task = latched.Latch;//await Task.WhenAny(latched.Latch, _tasks.Completion, tokenTaskSource.Task);
 
             // ok to run now
             if (task == latched.Latch)

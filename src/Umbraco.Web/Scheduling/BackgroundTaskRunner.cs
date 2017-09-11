@@ -6,6 +6,7 @@ using System.Web.Hosting;
 using Umbraco.Core;
 using Umbraco.Core.Events;
 using Umbraco.Core.Logging;
+using System.Runtime;
 
 namespace Umbraco.Web.Scheduling
 {

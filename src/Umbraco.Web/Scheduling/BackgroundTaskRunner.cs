@@ -222,7 +222,7 @@ namespace Umbraco.Web.Scheduling
                 _//tasks.Post(task);
 
                 // start
-                StartUpLocked();
+                //StartUpLocked();
             }
         }
 
